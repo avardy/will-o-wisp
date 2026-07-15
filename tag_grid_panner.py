@@ -146,22 +146,28 @@ class TagGridPanner:
         delta_angle = 10*pi
         delta_x = self.delta
         delta_y = self.delta
+        min_x = (self.tag_size + gx)//2
+        max_x = self.width - min_x
+        max_y = self.height - (self.tag_size + gy)//2
+        moving_right = True
 
         while not self.terminate:
             self.handle_events()
             self.update(tags)
             callback(tags)
 
-            lead_tag = tags[0]
-            if lead_tag.angle + delta_angle < 2*pi:
+            left_tag = tags[0]
+            right_tag = tags[m - 1]
+            bottom_tag = tags[-1]
+            if left_tag.angle + delta_angle < 2*pi:
                 tags = [WowTag(tag.id, tag.x, tag.y, tag.angle + delta_angle) for tag in tags]
-            #elif lead_tag.x + delta_x < 1.5 * self.tag_size + gx:
-            elif lead_tag.x + delta_x < 1.5 * (self.tag_size + gx):
+            elif moving_right and right_tag.x + delta_x <= max_x:
                 tags = [WowTag(tag.id, tag.x + delta_x, tag.y, 0) for tag in tags]
-            #elif lead_tag.y + delta_y < 1.5 * self.tag_size + gy:
-            elif lead_tag.y + delta_y < 1.5 * (self.tag_size + gy):
-                tags = [WowTag(tag.id, tag.x - self.tag_size - gx + delta_x, tag.y + delta_y, 0) for tag in tags]
-                assert tags[0].x == (self.tag_size + gx)//2, f"tags[0].x: {tags[0].x}, (ts+gx)//2: {(self.tag_size + gx)//2}"
+            elif not moving_right and left_tag.x - delta_x >= min_x:
+                tags = [WowTag(tag.id, tag.x - delta_x, tag.y, 0) for tag in tags]
+            elif bottom_tag.y + delta_y <= max_y:
+                tags = [WowTag(tag.id, tag.x, tag.y + delta_y, 0) for tag in tags]
+                moving_right = not moving_right
             else:
                 self.terminate = True
 
