@@ -112,15 +112,17 @@ if __name__ == "__main__":
     tg_calib_x_filtered = signal.medfilt2d(tg_calib_x_interp, kernel_size=(5,21))
     tg_calib_y_filtered = signal.medfilt2d(tg_calib_y_interp, kernel_size=9)
 
-    np.save("tg_calib_count", tg_calib_count)
-    np.save("tg_calib_x", tg_calib_x)
-    np.save("tg_calib_y", tg_calib_y)
-    np.save("tg_calib_count_interp", tg_calib_count_interp)
-    np.save("tg_calib_x_interp", tg_calib_x_interp)
-    np.save("tg_calib_y_interp", tg_calib_y_interp)
-    np.save("tg_calib_x_filtered", tg_calib_x_filtered)
-    np.save("tg_calib_y_filtered", tg_calib_y_filtered)
+    directory = f"tg_calib"
 
-    cv2.imwrite("coverage.png", coverage_image.astype(np.uint8))
+    np.save(f"{directory}/tg_calib_count", tg_calib_count)
+    np.save(f"{directory}/tg_calib_x", tg_calib_x)
+    np.save(f"{directory}/tg_calib_y", tg_calib_y)
+    np.save(f"{directory}/tg_calib_count_interp", tg_calib_count_interp)
+    np.save(f"{directory}/tg_calib_x_interp", tg_calib_x_interp)
+    np.save(f"{directory}/tg_calib_y_interp", tg_calib_y_interp)
+    np.save(f"{directory}/tg_calib_x_filtered", tg_calib_x_filtered)
+    np.save(f"{directory}/tg_calib_y_filtered", tg_calib_y_filtered)
+
+    cv2.imwrite(f"{directory}/coverage.png", coverage_image.astype(np.uint8))
     #plt.imshow(coverage_image)
     #plt.show()

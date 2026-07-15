@@ -66,6 +66,9 @@ class TagGridPanner:
 
         # flip() the display to put your work on screen
         pg.display.flip()
+        
+        # Force pygame to process all events to ensure display update is processed
+        pg.event.pump()
 
         if self.terminate:
             self.close()
