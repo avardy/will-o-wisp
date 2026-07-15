@@ -1,0 +1,17 @@
+{
+    "video_channel": 0,
+    "show_input": 0,
+    "fullscreen": 1,
+    "use_tg_calibration": 1,
+    "use_homography": 0,
+    "tg_tag_size": 35,
+    "tg_delta": 1,
+    "input_width": 1920,
+    "input_height": 1080,
+    "output_width": 960,
+    "output_height": 540,
+    "upper_left": [327, 227],
+    "upper_right": [1587, 211],
+    "lower_right": [1742, 942],
+    "lower_left": [174, 945]
+}

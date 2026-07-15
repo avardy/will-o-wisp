@@ -6,13 +6,11 @@ import json
 import numpy as np
 
 # There are two local config files.  We'll decide which to open right here:
-venue = 'lab'
-#venue = 'macbook'
 
-config_dir = f'config_{venue}'
+config_dir = f'config'
 config_filename = f'{config_dir}/config.json'
 
-calib_dir = f'calib_{venue}'
+calib_dir = f'calib'
 calib_K_filename = f'{calib_dir}/calib_K.json'
 calib_D_filename = f'{calib_dir}/calib_D.json'
 

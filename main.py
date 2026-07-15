@@ -11,7 +11,6 @@ from wow_tag import WowTag, raw_tags_to_wow_tags, apply_tg_calibration_to_raw_ta
 from config_loader import ConfigLoader
 from game_screen import GameScreen
 from image_processing import capture_and_preprocess
-from config_loader import venue
 
 # Customize the level and controller.
 from levels import DummyLevel, SynchronyLevel, TestLevel, FirstGameLevel
@@ -52,7 +51,7 @@ if __name__ == "__main__":
         homography, status = cv2.findHomography(np.array(cfg.screen_corners), np.array(output_corners))
 
     if cfg.use_tg_calibration:
-        directory = f"tg_calib_{venue}/delta_{cfg.tg_delta}"
+        directory = f"tg_calib"
 
         tg_calib_count = np.load(f"{directory}/tg_calib_count_interp.npy")
         tg_calib_x = np.load(f"{directory}/tg_calib_x_filtered.npy")

@@ -3,13 +3,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import signal
-from config_loader import venue, ConfigLoader
+from config_loader import ConfigLoader
 
 if __name__ == "__main__":
 
     cfg = ConfigLoader.get()
 
-    directory = f"tg_calib_{venue}/delta_{cfg.tg_delta}"
+    directory = f"tg_calib"
 
     tg_calib_count = np.load(f"{directory}/tg_calib_count.npy")
     tg_calib_x = np.load(f"{directory}/tg_calib_x.npy")
